@@ -35,10 +35,10 @@ module.exports = {
       // rules for modules (configure loaders, parser options, etc.)
 
       {
-        test: /\.jsx?$/,
-        include: [
-          path.resolve(__dirname, "app")
-        ],
+        test: /\.js$/,
+        // include: [
+        //   path.resolve(__dirname, "app")
+        // ],
         exclude: /node_modules/,
         // these are matching conditions, each accepting a regular expression or string
         // test and include have the same behavior, both must be matched
