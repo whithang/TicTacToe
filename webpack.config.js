@@ -1,7 +1,8 @@
 const path = require('path');
 
 module.exports = {
-  entry: "./index.js", // string | object | array
+  // context: path.join(__dirname, 'src'),
+  entry: "./src/main.js", // string | object | array
   // Here the application starts executing
   // and webpack starts bundling
 
@@ -38,9 +39,7 @@ module.exports = {
         include: [
           path.resolve(__dirname, "app")
         ],
-        exclude: [
-          path.resolve(__dirname, "app/demo-files")
-        ],
+        exclude: /node_modules/,
         // these are matching conditions, each accepting a regular expression or string
         // test and include have the same behavior, both must be matched
         // exclude must not be matched (takes preferrence over test and include)
@@ -49,7 +48,7 @@ module.exports = {
         // - Use arrays of absolute paths in include and exclude
         // - Try to avoid exclude and prefer include
 
-        issuer: { test, include, exclude },
+        // issuer: { test, include, exclude },
         // conditions for the issuer (the origin of the import)
 
         enforce: "pre",
@@ -82,20 +81,20 @@ module.exports = {
         ]
       },
 
-      { oneOf: [ /* rules */ ] },
-      // only use one of these nested rules
-
-      { rules: [ /* rules */ ] },
-      // use all of these nested rules (combine with conditions to be useful)
-
-      { resource: { and: [ /* conditions */ ] } },
-      // matches only if all conditions are matched
-
-      { resource: { or: [ /* conditions */ ] } },
-      { resource: [ /* conditions */ ] },
-      // matches if any condition is matched (default for arrays)
-
-      { resource: { not: /* condition */ } }
+      // { oneOf: [ /* rules */ ] },
+      // // only use one of these nested rules
+      //
+      // { rules: [ /* rules */ ] },
+      // // use all of these nested rules (combine with conditions to be useful)
+      //
+      // { resource: { and: [ /* conditions */ ] } },
+      // // matches only if all conditions are matched
+      //
+      // { resource: { or: [ /* conditions */ ] } },
+      // { resource: [ /* conditions */ ] },
+      // // matches if any condition is matched (default for arrays)
+      //
+      // { resource: { not: /* condition */ } }
       // matches if the condition is not matched
     ],
 
@@ -105,7 +104,7 @@ module.exports = {
 
     modules: [
       // "node_modules",
-      // path.resolve(__dirname, "app")
+      path.join(__dirname, "node_modules"),
     ],
     // directories where to look for modules
 
